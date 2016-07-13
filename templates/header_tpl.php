@@ -17,9 +17,14 @@
                 <nav class="navbar">
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Logare</a></li>
-                            <li><a href="#">Inregistrare</a></li>
+                            <li class="active"><a href="index.php">Home</a></li>
+                            <?php if(!isset($_SESSION['user'])):?>
+                            <li><a href="logare.php">Logare</a></li>
+                            <li><a href="inregistrare.php">Inregistrare</a></li>
+                            <?php else:?>
+                            <li><a href="#">Loggat ca: <?php echo $_SESSION['user']; ?></a></li>
+                            <li><a href="logout.php">Logout</a></li>
+                            <?php endif;?>
                         </ul>
                     </div>
                 </nav>
