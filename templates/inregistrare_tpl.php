@@ -12,7 +12,7 @@
         <label for="pass" class="control-label col-md-offset-1 col-md-2">Parola: </label><div class="col-md-8"><input type="password"  class="form-control" name="pass" id="pass"></div>
     </div>
     <div class="form-group">
-        <label for="img" class="control-label col-md-offset-1 col-md-2">Avatar: </label><div class="col-md-8"><input type="file" class="file" name="userImage" style="display:inline" id="img"></div>
+        <label for="userImage" class="control-label col-md-offset-1 col-md-2">Avatar: </label><div class="col-md-8"><input type="file" class="file" name="userImage" style="display:inline" id="userImage"></div>
     </div>
     <input type="hidden" name="ref" value="<?php echo $ref ?>">
     <div class="form-group">
