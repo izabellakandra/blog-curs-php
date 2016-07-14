@@ -95,3 +95,15 @@ h1 {
     font-family: georgia,serif;
     font-size: 35px;
 }
+
+#autorcontainer {
+    border:1px solid #eee; 
+    width:50%;
+    padding-left: 10px;
+}
+
+.img-thumbnail {
+    height: 50px;
+    width:50px;
+    float:right;
+}

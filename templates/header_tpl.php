@@ -22,7 +22,7 @@
                             <li><a href="logare.php">Logare</a></li>
                             <li><a href="inregistrare.php">Inregistrare</a></li>
                             <?php else:?>
-                            <li><a href="#">Loggat ca: <?php echo $_SESSION['user']; ?></a></li>
+                            <li><a href="autor.php">Loggat ca: <?php echo $_SESSION['user']; ?></a></li>
                             <li><a href="logout.php">Logout</a></li>
                             <?php endif;?>
                         </ul>
