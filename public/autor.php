@@ -20,7 +20,7 @@ if(isset($detaliiAutor[0]['caleImg']) && $detaliiAutor[0]['caleImg'] != ''){
   $caleImg = $detaliiAutor[0]['caleImg'];
 }
 else{
-  $caleImg = '../images/profile.jpg';
+  $caleImg = '../images/profile.png';
 }
 
 echo template('page_tpl', array(
