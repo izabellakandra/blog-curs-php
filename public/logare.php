@@ -19,9 +19,13 @@ if (isset($_POST['user'])) {
             'database' => 'blog_curs_php',
             'pass' => 'root',
         ));
+        $sth = $conn->prepare('SELECT parola FROM autori WHERE user = :user LIMIT 1');
+        $sth->bindParam(':user', $_POST['user']);
+        $sth->execute();
+        $user = $sth->fetch(PDO::FETCH_OBJ);       
         $result=db_select($conn, 'SELECT * FROM autori where user=:user and parola=:pass', array(
             ':user' => $_POST['user'],
-            ':pass' => $_POST['pass']
+            ':pass' => $user->parola
         ));
         if(!empty($result)){
             $_SESSION['user']=$_POST['user'];
