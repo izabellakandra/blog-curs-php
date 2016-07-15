@@ -12,44 +12,48 @@ if(isset($_SESSION['user'])) {
     exit;
 }
 
-$errorStack = array();
+$error = NULL;
 if (isset($_POST['name'])) {
     if (trim($_POST['name']) != '') {
         if(isset($_POST['ref']))
             $ref = $_POST['ref'];
-        $path = checkFile('userImage', $errorStack, 'images/users/');
-        if(!empty($errorStack)){
-            showForm($ref);
-            echo $errorStack[0];
-            exit;
+        $path = NULL;
+        if(!empty($_FILES['userImage']['name']))
+        {
+            $path = checkImgFile('userImage', $error, 'images/users/', $_POST['user']);
+            if(!$path){
+                showForm($ref, $error);
+                exit;
+            }
         }
         $conn = db_connect(array(
             'database' => 'blog_curs_php',
             'pass' => 'root',
         ));
-        db_insert($conn, 'INSERT INTO autori (nume,email,user,parola) VALUES (:name, :email, :user, :pass)', array(
+        db_insert($conn, 'INSERT INTO autori (nume,email,user,parola,caleImg) VALUES (:name, :email, :user, :pass, :path)', array(
             ':name' => $_POST['name'],
             ':email' => $_POST['email'],
             ':user' => $_POST['user'],
-            ':pass' => $_POST['pass']
+            ':pass' => $_POST['pass'],
+            ':path' => $path
         ));
         $_SESSION['user']=$_POST['user'];
         header('Location: '. $ref);
-        showForm($ref);
+        //showForm($ref);
         exit;
     } else {
-        showForm($ref);
+        showForm($ref, $error);
     }
 } else {
     showForm($ref);
 }
 
-function showForm($ref) {
+function showForm($ref, $error = NULL) {
     echo template('page_tpl', array (
         'page_title' => 'Inregistrare',
         'content' => template('inregistrare_tpl', array(
                         'ref' => $ref,
-                        //'test' => print_r($errorStack),
+                        'error' => $error,
                     )),
     ));
 }
