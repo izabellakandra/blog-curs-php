@@ -6,7 +6,7 @@
             </div>
             <div class="col-sm-8 text-right menu-right">
                 <?php echo lnk('Despre noi'); ?>
-                <?php echo lnk('Contact'); ?>
+                <?php echo lnk('Contact', '/contact.php'); ?>
             </div>
         </div>
     </div>
