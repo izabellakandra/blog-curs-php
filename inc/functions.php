@@ -20,6 +20,15 @@ function ellipsis($string, $length) {
     return strlen($string) > $length ? substr($string, 0, $length) . "..." : $string;
 }
 
+function html_a($text, $href = '#')
+{
+    return template('articole/anchor_tpl', array(
+        'continut' => $text,
+        'href' => $href,
+    ));
+}
+
+
 function detaliiArticol($arr) {
   if(!empty($arr)) {
     foreach($arr as $key => $val) {
