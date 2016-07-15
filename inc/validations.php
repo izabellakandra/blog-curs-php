@@ -37,3 +37,19 @@ function checkImgFile($id, &$error, $dir, $user, $size = 2000000) {
         return $path;
     }
 }
+
+function checkText($text, &$error, $minSize, $maxSize) {
+    if(trim(text) == '' || text== NULL ) {
+        $error = 'Field is empty!';
+        return FALSE;
+    } 
+    if(strlen($text)>$maxSize){
+        $error = 'Text too long!';
+        return FALSE;
+    }
+    if(strlen($text)<$minSize){
+        $error = 'Text too short!';
+        return FALSE;
+    }
+    return TRUE;
+}
