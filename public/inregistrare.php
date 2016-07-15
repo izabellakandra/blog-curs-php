@@ -30,12 +30,16 @@ if (isset($_POST['name'])) {
             'database' => 'blog_curs_php',
             'pass' => 'root',
         ));
+        $cost = 10;
+        $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.');
+        $salt = sprintf("$2a$%02d$", $cost) . $salt;
+
         db_insert($conn, 'INSERT INTO autori (nume,email,user,parola,caleImg) VALUES (:name, :email, :user, :pass, :path)', array(
             ':name' => $_POST['name'],
             ':email' => $_POST['email'],
             ':user' => $_POST['user'],
-            ':pass' => $_POST['pass'],
-            ':path' => $path
+            ':pass' => crypt($_POST['pass'], $salt),
+            ':path' => $path,
         ));
         $_SESSION['user']=$_POST['user'];
         header('Location: '. $ref);
