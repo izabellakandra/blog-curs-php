@@ -1,5 +1,23 @@
 body {
-   background-color: #f9f9f9; 
+   background-color: #F2F2F2; 
+   font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  color: #079E69;
+}
+a:hover {
+  color: #19694D;
+}
+
+h1 {
+  font-size: 35px;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .navbar-toggle  span {
@@ -15,41 +33,40 @@ body {
     margin-bottom: 0px;
 }
 
-#navbar {
-    text-transform: uppercase;
-    padding: 0px;
+@media (min-width: 768px) {
+  .navbar {
+    float: right;
+  }
 }
 
-.logo-region {
+#navbar {
+    padding: 0px;
     margin-top: 15px;
-    margin-bottom: 15px;
 }
 
 #navbar a {
-    color: #181818;
+    color: #777;
     display: block;
-    font-family: georgia,serif;
-    font-size: 12px;
-    font-style: normal;
-    letter-spacing: 1.5px;
-    line-height: 1em;
+    font-size: 14px;
     padding: 20px 25px;
     position: relative;
-    text-transform: uppercase;
     transition: all 0.15s ease 0s;
+    font-weight: 600;
     border-top: 5px solid transparent;
-    margin-top: -5px;
 }
 
-#navbar a:hover {
-    border-color: #dcb130;
+#navbar a:hover,
+#navbar a:focus,
+#navbar li.active a {
+    border-color: #85CFB5;
     background: transparent;
+    color: #68c3a3;
 }
 
 header {
     padding: 20px;
     background-color: #fff;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid #E2E3E3;
 }
 
 footer {
@@ -71,11 +88,6 @@ footer a:hover {
     margin-left: 20px;
 }
 
-.separator {
-    height: 5px;
-    border-top: 1px solid #e8e8e8;
-    border-bottom: 1px solid #e8e8e8;
-}
 
 @media (max-width: 768px) {
     .navbar {
@@ -86,12 +98,57 @@ footer a:hover {
 .white-block {
     background-color: #fff;
     padding: 20px;
-    border: 1px solid #e8e8e8;
+    border: 1px solid #E2E3E3;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-h1 {
-    font-family: georgia,serif;
-    font-size: 35px;
+.btn,
+.btn .btn-primary {
+  background-color: #85CFB5;
+  color: #fff;
+  border-radius: 0px;
+  border: 1px solid #85CFB5;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.btn:hover,
+.btn .btn-primary:hover {
+  background-color: #36B78A;
+  border: 1px solid #36B78A;
+}
+
+#banner {
+  overflow: hidden;
+  position: relative;
+/*  background: url(../images/banner/banner2.jpg) no-repeat center center #333;*/
+  padding-top: 100px;
+  padding-bottom: 100px;
+  color: #fff;
+/*  background-size: cover;*/
+}
+
+#banner .overlay {
+  position: absolute;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  background-color: rgba(23, 23, 23, 0.48);
+  width: 100%;
+  z-index: -1;
+}
+
+video { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    transform: translateX(-50%) translateY(-50%);
+    background-size: cover;
+    transition: 1s opacity;
 }

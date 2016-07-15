@@ -13,7 +13,6 @@
 
             </div>
             <div class="col-sm-8">
-                <div class="separator hidden-xs"></div>
                 <nav class="navbar">
                     <div id="navbar" class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
@@ -23,7 +22,6 @@
                         </ul>
                     </div>
                 </nav>
-                <div class="separator hidden-xs"></div>
             </div>
         </div>
     </div>
