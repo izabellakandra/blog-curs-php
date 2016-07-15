@@ -17,7 +17,7 @@ if (isset($_POST['name'])) {
     if (isset($_POST['ref']))
         $ref = $_POST['ref'];
     if (trim($_POST['name']) != '') {
-        $path = NULL;
+        $path = 'images/profile.png';
         if(!empty($_FILES['userImage']['name']))
         {
             $path = checkImgFile('userImage', $error, 'images/users/', $_POST['user']);
