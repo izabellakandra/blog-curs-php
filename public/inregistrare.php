@@ -14,15 +14,15 @@ if(isset($_SESSION['user'])) {
 
 $error = NULL;
 if (isset($_POST['name'])) {
+    if (isset($_POST['ref']))
+        $ref = $_POST['ref'];
     if (trim($_POST['name']) != '') {
-        if(isset($_POST['ref']))
-            $ref = $_POST['ref'];
         $path = NULL;
         if(!empty($_FILES['userImage']['name']))
         {
             $path = checkImgFile('userImage', $error, 'images/users/', $_POST['user']);
             if(!$path){
-                showForm($ref, $error);
+                showForm($ref, $error, $_POST);
                 exit;
             }
         }
@@ -46,18 +46,19 @@ if (isset($_POST['name'])) {
         //showForm($ref);
         exit;
     } else {
-        showForm($ref, $error);
+        showForm($ref, $error, $_POST);
     }
 } else {
-    showForm($ref);
+    showForm($ref, NULL);
 }
 
-function showForm($ref, $error = NULL) {
+function showForm($ref, $error, $values = NULL) {
     echo template('page_tpl', array (
         'page_title' => 'Inregistrare',
         'content' => template('inregistrare_tpl', array(
                         'ref' => $ref,
                         'error' => $error,
+                        'values' => $values,
                     )),
     ));
 }
