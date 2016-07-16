@@ -1,3 +1,4 @@
+<!-- Note! Erorile ar fi bine sa fie puse in data-content="", daca se poate, altfel fac o regiune pentru mesaje de eroare.-->
 <form class="form-horizontal" method="POST">
     <div class="form-group">
         <label for="user" class="control-label col-md-offset-2 col-md-2">Nume user: </label>
