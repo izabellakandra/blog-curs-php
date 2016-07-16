@@ -5,9 +5,23 @@ body {
 
 a {
   color: #079E69;
+  outline: none !important;
 }
 a:hover {
   color: #19694D;
+}
+
+.popover-content {
+    white-space: pre;
+}
+
+img {
+    max-width: 100%;
+    width: auto;
+}
+
+.logo-region img {
+    max-width: 200px;
 }
 
 h1 {
@@ -82,7 +96,8 @@ footer a {
     color: #fff;
 }
 
-footer a:hover {
+footer a:hover,
+footer a:focus {
     color: #fff;
 }
 

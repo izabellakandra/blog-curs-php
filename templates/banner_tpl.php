@@ -1,6 +1,7 @@
 <div id="banner">
-	<video autoplay loop muted id="bgvid">
-	  <source src="/images/banner/banner.mp4" type="video/mp4">
+	<video autoplay muted id="bgvid">
+	  <source src="images/banner/banner.mp4" type="video/mp4">
+          <source src="images/banner/banner.webm" type="video/webm">
 	</video>
 	<div class="container text-center">
 		<h1><?php echo $page_title; ?></h1>

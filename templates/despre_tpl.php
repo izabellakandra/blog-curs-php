@@ -1,0 +1,5 @@
+<div class="text-center"><img src="/images/logo_cylex.png"></div><br><br>
+<p>GastroCylexia a fost creat in iulie 2016 de catre Cylex si este considerat unul dintre primele bloguri culinare din Romania.</p>
+<p>Creatorii acestui blog culinar sunt Balázs-Zoltán Mitereiter, Szilárd Takács, Remus Ciuciu, Andrei Simedre si Izabella Kandra care sunt angajatii firmei Cylex.</p>
+<p>In paginile acestui blog veti gasi atat retete culinare simple si rapide, cat si retete mai complexe, toate fiind explicate pas cu pas, in fotografii sugestive. Pe langa retetele traditionale romanesti, va propun retete caracteristice bucatariei italiene pe care o iubesc in mod deosebit, dar si alte retete internationale.</p>
+<p>Va astept cu mare drag sa rasfoiti paginile acestui blog si sper din suflet sa va placa ce veti gasi aici.<p>
