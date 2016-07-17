@@ -1,11 +1,13 @@
 <div>
     <?php foreach($articole as $articol): ?>
     <div>
-        <h4>
+        
             <?php echo html_a($articol['titlu'], '/articol/view.php?id=' . $articol['ID']);  ?>
-            <br>
+            <br><br>
             <?php echo $articol['continut']; ?>
-        </h4>
+			<br><br><p align="right">
+			<?php echo $articol['data']; ?> 
+			</p>
     </div>
     <?php endforeach;?>
 </div>
