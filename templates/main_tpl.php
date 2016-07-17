@@ -11,7 +11,7 @@
 $con = db_connect(array(
         'host' => '127.0.0.1',
         'port' => 3306,
-        'database' => 'articole',
+        'database' => 'cylex',
         'charset' => 'utf8',
         'user' => 'root',
         'pass' => '',
