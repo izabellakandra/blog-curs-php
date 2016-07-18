@@ -1,6 +1,6 @@
 <?php
 
-function checkImgFile($id, &$error, $dir, $user, $size = 2000000) {
+function checkImgFile($id, &$error, $size = 2000000) {
     switch ($_FILES[$id]['error']) {
         case UPLOAD_ERR_OK:
             break;
@@ -29,17 +29,10 @@ function checkImgFile($id, &$error, $dir, $user, $size = 2000000) {
         $error = 'Invalid file format.';
         return FALSE;
     }
-    $path = $dir . $user . '_' . $_FILES[$id]['name'];
-    if (!move_uploaded_file($_FILES[$id]['tmp_name'], $path)) {
-        $error = 'Failed to move uploaded file.';
-        return FALSE;
-    } else {
-        return $path;
-    }
 }
 
 function checkText($text, &$error, $minSize, $maxSize) {
-    if(trim(text) == '' || text== NULL ) {
+    if(trim($text) == '' || $text== NULL ) {
         $error = 'Field is empty!';
         return FALSE;
     } 
