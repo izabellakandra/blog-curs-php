@@ -29,7 +29,7 @@ $articol = $results[0];
 
 
 echo template('page_tpl', array(
-                                          'page_title' => 'Afisare dupa ArtID nr. : ' . $articol['autID'],
+                                          'page_title' => 'Afisare dupa AutID nr. : ' . $articol['autID'],
                                           'content' => template('main_tpl', array ( 'art' => template('articole/autor_tpl', array('articole' => $results)
                                  )))
             ));
