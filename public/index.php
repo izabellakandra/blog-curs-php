@@ -11,10 +11,10 @@ include '../inc/db.php';
 $con = db_connect(array(
         'host' => '127.0.0.1',
         'port' => 3306,
-        'database' => 'cylex',
+        'database' => 'blog_curs_php',
         'charset' => 'utf8',
         'user' => 'root',
-        'pass' => '',
+        'pass' => 'root',
 ));
 $query = "SELECT * FROM articole ORDER BY data DESC";
 $results = db_select($con, $query);
