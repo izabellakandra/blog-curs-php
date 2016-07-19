@@ -1,15 +1,14 @@
-<!-- Note! Erorile ar fi bine sa fie puse in data-content="", daca se poate, altfel fac o regiune pentru mesaje de eroare.-->
-<form class="form-horizontal" method="POST">
+<form class="form-horizontal tooltip-validation" method="POST">
     <div class="form-group">
         <label for="user" class="control-label col-md-offset-2 col-md-2">Nume user: </label>
         <div class="col-md-4">
-            <input type="text"  class="form-control" name="user" id="user" data-toggle="popover" data-placement="right" data-content="">
+            <input type="text"  class="form-control" name="user" id="user" <?php if($values != NULL) echo 'value="'.$values['user'].'"'?> data-toggle="popover" data-placement="right" data-content="<?php if(isset($error['user'])) echo $error['user']; ?>">
         </div>
     </div>
     <div class="form-group">
         <label for="pass" class="control-label col-md-offset-2 col-md-2">Parola: </label>
         <div class="col-md-4">
-            <input type="password"  class="form-control" name="pass" id="pass" data-toggle="popover" data-placement="right" data-content="">
+            <input type="password"  class="form-control" name="pass" id="pass" data-toggle="popover" data-placement="right" data-content="<?php if(isset($error['pass'])) echo $error['pass']; ?>">
         </div>
     </div>
     <input type="hidden" name="ref" value="<?php echo $ref ?>">

@@ -1,4 +1,3 @@
-<!-- Note! Erorile ar fi bine sa fie puse in data-content="", daca se poate, altfel fac o regiune pentru mesaje de eroare.-->
 <form class="form-horizontal tooltip-validation" method="POST" enctype="multipart/form-data">
     <div class="form-group">
         <label for="name" class="control-label col-md-offset-1 col-md-2">Nume: </label>
