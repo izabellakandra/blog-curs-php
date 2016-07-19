@@ -27,16 +27,15 @@ if (isset($_POST['user'])) {
         'pass' => 'root',
     ));
     
-    //print_r($namedError);
+    
     if (empty($namedError)) {
-        $sth = $conn->prepare('SELECT parola FROM autori WHERE user = :user LIMIT 1');
-        $sth->bindParam(':user', $_POST['user']);
-        $sth->execute();
-        $user = $sth->fetch(PDO::FETCH_OBJ);
-        $result = db_select($conn, 'SELECT * FROM autori where user=:user and parola=:pass', array(
-            ':user' => $_POST['user'],
-            ':pass' => $user->parola
-        ));
+        $query2 = "SELECT * FROM autori where user='" . $_POST['user'] . "'";
+        $result2 = db_select($conn, $query2);
+        if(password_verify($_POST['pass'], $result2[0]['parola'])){
+            $result = db_select($conn, 'SELECT * FROM autori where user=:user' , array(
+                ':user' => $_POST['user'],
+            ));
+        }
         if (!empty($result)) {
             $_SESSION['user'] = $_POST['user'];
             header('Location: ' . $ref);

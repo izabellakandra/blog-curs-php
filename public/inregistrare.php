@@ -62,15 +62,15 @@ if (isset($_POST['name'])) {
     }
     //print_r($namedError);
     if (empty($namedError)) {
-        $cost = 10;
-        $salt = strtr(base64_encode(mcrypt_create_iv(16, MCRYPT_DEV_URANDOM)), '+', '.'); //mycrypt modul needed!!!
-        $salt = sprintf("$2a$%02d$", $cost) . $salt;
-
+        $conn = db_connect(array(
+            'database' => 'blog_curs_php',
+            'pass' => 'root',
+        ));
         db_insert($conn, 'INSERT INTO autori (nume,email,user,parola,caleImg) VALUES (:name, :email, :user, :pass, :path)', array(
             ':name' => $_POST['name'],
             ':email' => $_POST['email'],
             ':user' => $_POST['user'],
-            ':pass' => crypt($_POST['pass'], $salt),
+            ':pass' => password_hash($_POST['pass'], PASSWORD_BCRYPT),
             ':path' => $path,
         ));
         $_SESSION['user'] = $_POST['user'];
