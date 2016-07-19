@@ -16,7 +16,7 @@ $con = db_connect(array(
         'pass' => 'root',
 ));
 
-$query = "SELECT * FROM articole WHERE autID = :aut";
+$query = "SELECT titlu, continut, autID, nume, data, articole.ID FROM articole INNER JOIN autori ON articole.autID=autori.ID WHERE articole.autID = :aut";
 
 $results = db_select($con, $query, array(
     ':aut' => $_GET['autID']
@@ -29,7 +29,7 @@ $articol = $results[0];
 
 
 echo template('page_tpl', array(
-                                          'page_title' => 'Afisare dupa AutID nr. : ' . $articol['autID'],
+                                          'page_title' => 'Autor: ' . $articol['nume'],
                                           'content' => template('main_tpl', array ( 'art' => template('articole/autor_tpl', array('articole' => $results)
                                  )))
             ));

@@ -16,7 +16,7 @@ $con = db_connect(array(
         'pass' => 'root',
 ));
 
-$query = "SELECT * FROM articole WHERE ID = :val";
+$query = "SELECT titlu, continut, autID, nume, data, articole.ID FROM articole INNER JOIN autori ON articole.autID=autori.ID WHERE articole.ID = :val";
 
 $results = db_select($con, $query, array(
     ':val' => $_GET['ID']

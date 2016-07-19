@@ -16,7 +16,7 @@ $con = db_connect(array(
         'user' => 'root',
         'pass' => 'root',
 ));
-$query = "SELECT * FROM articole ORDER BY data DESC";
+$query = "SELECT titlu, continut, autID, articole.ID, nume, data FROM articole INNER JOIN autori ON articole.autID=autori.ID ORDER BY data DESC";
 $results = db_select($con, $query);
 
 
