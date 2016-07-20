@@ -29,14 +29,18 @@ if (isset($_POST['user'])) {
     
     
     if (empty($namedError)) {
-        $query2 = "SELECT * FROM autori where user='" . $_POST['user'] . "'";
-        $result2 = db_select($conn, $query2);
-        if(password_verify($_POST['pass'], $result2[0]['parola'])){
-            $result = db_select($conn, 'SELECT * FROM autori where user=:user' , array(
+        $query = 'SELECT * FROM autori where user=:user';
+        $result = db_select($conn, $query, array(
                 ':user' => $_POST['user'],
             ));
-        }
-        if (!empty($result)) {
+        if (!empty($result)) { echo password_verify($_POST['pass'], $result[0]['parola']);
+            if(!password_verify($_POST['pass'], $result[0]['parola'])){
+                $namedError['user'] = 'Invalid login data!';
+                $namedError['pass'] = 'Invalid login data!';
+                showForm($ref, $namedError, $_POST);
+                exit;
+            }
+            //showForm($ref, $namedError, $_POST);
             $_SESSION['user'] = $_POST['user'];
             header('Location: ' . $ref);
             exit;
