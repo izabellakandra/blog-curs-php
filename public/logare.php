@@ -21,20 +21,21 @@ if (isset($_POST['user'])) {
         $namedError['user'] = $error;
     if (!checkText($_POST['pass'], $error, 4, 50))
         $namedError['pass'] = $error;
-    
+
     $conn = db_connect(array(
         'database' => 'blog_curs_php',
         'pass' => 'root',
     ));
-    
-    
+
+
     if (empty($namedError)) {
         $query = 'SELECT * FROM autori where user=:user';
         $result = db_select($conn, $query, array(
-                ':user' => $_POST['user'],
-            ));
-        if (!empty($result)) { echo password_verify($_POST['pass'], $result[0]['parola']);
-            if(!password_verify($_POST['pass'], $result[0]['parola'])){
+            ':user' => $_POST['user'],
+        ));
+        if (!empty($result)) {
+            echo password_verify($_POST['pass'], $result[0]['parola']);
+            if (!password_verify($_POST['pass'], $result[0]['parola'])) {
                 $namedError['user'] = 'Invalid login data!';
                 $namedError['pass'] = 'Invalid login data!';
                 showForm($ref, $namedError, $_POST);

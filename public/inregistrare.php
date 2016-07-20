@@ -54,7 +54,7 @@ if (isset($_POST['name'])) {
             $namedError['img'] = $error;
         }
         if (empty($namedError)) {
-            $path = 'images/users/' . $_POST['user'] . '_' . $_FILES['userImage']['name'];
+            $path = 'images/users/' . time(). '_' . $_POST['user'] . '_' . $_FILES['userImage']['name'];
             if (!move_uploaded_file($_FILES['userImage']['tmp_name'], $path)) {
                 $namedError['img'] = 'Failed to move uploaded file.';
             }
