@@ -32,13 +32,13 @@ function html_a($text, $href = '#')
 function detaliiArticol($arr) {
   if(!empty($arr)) {
     foreach($arr as $key => $val) {
-      echo "<h3><a href='#' id='link-titlu-articol'>" . $val['titlu'] . "</a></h3>";
+      echo "<h3><a href='view.php?ID=" . $val['ID'] ."' id='link-titlu-articol'>" . $val['titlu'] . "</a></h3>";
       if(isset($val['caleImg']) && $val['caleImg'] != ''){
         $caleImgArticol = $val['caleImg'];
         echo "<img src=" . $caleImgArticol . ">";
       }
       if(strlen($val['continut']) > 500) {
-        echo "<p>" . substr($val['continut'], 0, 500) . "<a href='#' id='arata-tot'>...Arata tot</a></p>";
+        echo "<p>" . substr($val['continut'], 0, 500) . "...</p>";
       } 
       else {
         echo "<p>" . $val['continut'] . "</p>";
