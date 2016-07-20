@@ -1,6 +1,6 @@
 <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#author" aria-controls="author" role="tab" data-toggle="tab">Detalii Autor</a></li>
-    <li role="presentation"><a href="#author-articles" aria-controls="author-articles" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#author-articles" aria-controls="author-articles" role="tab" data-toggle="tab">Articole</a></li>
 </ul>
 <br>
 <div class="tab-content">
@@ -14,9 +14,9 @@
     </div>
     <div role="tabpanel" class="tab-pane fade" id="author-articles">
 
-        <h1>Articolele mele</h1>
+        <h2>Articolele mele</h2>
         <div id="articole-autor-container">
-            <h3><?php detaliiArticol($detaliiArticol) ?></h3>
+           <?php detaliiArticol($detaliiArticol) ?>
         </div>
 
     </div>

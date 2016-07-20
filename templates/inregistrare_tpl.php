@@ -24,9 +24,8 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="userImage" class="control-label col-md-offset-1 col-md-2">Avatar: </label><div class="col-md-8"><input type="file" class="file" name="userImage" style="display:inline" id="userImage"></div>
+        <label for="userImage" class="control-label col-md-offset-1 col-md-2">Avatar: </label><div class="col-md-8" ><input type="file" class="file" name="userImage" style="display:inline" id="userImage" data-toggle="popover" data-placement="right" data-content="<?php if(isset($error['img'])) echo $error['img']; ?>"></div>
     </div>
-    <?php if(isset($error['img'])) echo '<p>'.$error['img'].'</p>'; ?>
     <input type="hidden" name="ref" value="<?php echo $ref ?>">
     <div class="form-group">
         <div class="col-md-offset-5 col-md-7"><button type="submit" class="btn btn-primary">Inregistrare</button></div>

@@ -1,6 +1,9 @@
 <div>
           <?php foreach($articole as $articol): ?>
-            <a name=n></a> 
+            <?php if (isset($articol['caleImg']) && !empty($articol['caleImg'])): ?>
+              <img src="<?php echo $articol['caleImg'];?>">
+            <?php endif;?>
+            <br><br>
             <?php echo $articol['continut']; ?>
             <br><br>
 		<div class="row"> 

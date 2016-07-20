@@ -1,7 +1,8 @@
 <?php
 include '../inc/db.php';
 include '../inc/functions.php';
-
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 
 if(!isset($_GET['ID'])){
     page_not_found();
@@ -16,7 +17,7 @@ $con = db_connect(array(
         'pass' => 'root',
 ));
 
-$query = "SELECT titlu, continut, autID, nume, data, articole.ID FROM articole INNER JOIN autori ON articole.autID=autori.ID WHERE articole.ID = :val";
+$query = "SELECT titlu, continut, autID, articole.caleImg, nume, data, articole.ID FROM articole INNER JOIN autori ON articole.autID=autori.ID WHERE articole.ID = :val";
 
 $results = db_select($con, $query, array(
     ':val' => $_GET['ID']

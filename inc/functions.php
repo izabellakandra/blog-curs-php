@@ -47,6 +47,6 @@ function detaliiArticol($arr) {
     }
   }
   else {
-    echo "<h3>Niciun articol adaugat</h3>";
+    echo "Niciun articol adaugat";
   }
 }
