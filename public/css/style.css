@@ -11,6 +11,18 @@ a:hover {
   color: #19694D;
 }
 
+.small-font {
+    font-size: 12px;
+}
+
+.text-muted.small-font {
+    display: block;
+    min-height: 16px;
+}
+.padding-top {
+    padding-top: 5px;
+}
+
 .popover-content {
     white-space: pre;
 }

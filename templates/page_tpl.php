@@ -25,20 +25,31 @@
                         <?php if (isset($content)): ?>
                             <?php echo $content; ?>
                         <?php endif; ?>
-                     </div>                
+                    </div>                
                 </div>
                 <div class="col-md-4">
-                    <div class="white-block">O prostie</div>
+                    <div class="white-block">
+                        <span class='st_sharethis_large' displayText='ShareThis'></span>
+                        <span class='st_facebook_large' displayText='Facebook'></span>
+                        <span class='st_twitter_large' displayText='Tweet'></span>
+                        <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                        <span class='st_pinterest_large' displayText='Pinterest'></span>
+                        <span class='st_email_large' displayText='Email'></span>
+
+                    </div>
                     <div class="white-block">Alta prostie</div>
                 </div>
             </div>
         </div>
-       
+
         <?php
         echo template('footer_tpl', array());
         ?>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="/js/script.js"></script>
+        <script type="text/javascript">var switchTo5x = true;</script>
+        <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+        <script type="text/javascript">stLight.options({publisher: "a5055aeb-ea6e-42b2-848c-60145aa0f8c7", doNotHash: false, doNotCopy: false, hashAddressBar: false});</script>
     </body> 
 </html>
