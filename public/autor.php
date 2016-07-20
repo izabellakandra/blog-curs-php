@@ -22,10 +22,14 @@ else {
   $caleImgAutor = '../images/profile.png';
 }
 
-$query2 = "SELECT * FROM articole WHERE autID =" . "'" . $detaliiAutor[0]['ID'] . "'";
-$detaliiArticol = db_select($conn, $query2);
+$query2 = "SELECT titlu, continut, autID, nume, data, articole.ID FROM articole INNER JOIN autori ON articole.autID=autori.ID WHERE articole.autID = :aut";
+$detaliiArticol = db_select($conn, $query2, array(
+    ':aut' => $detaliiAutor[0]['ID']
+));
 
 
+// print_r($detaliiArticol);
+// die;
 
 echo template('page_tpl', array(
     'page_title' => 'Autor',
@@ -35,5 +39,8 @@ echo template('page_tpl', array(
       'email' => $email,
       'caleImgAutor' => $caleImgAutor,
       'detaliiArticol' => $detaliiArticol,
-      ))
+      'articoleAut' => template('articole/autor_tpl', array(
+        'articole' => $detaliiArticol
+        ))
+      )),
 ));

@@ -16,7 +16,7 @@
 
         <h2>Articolele mele</h2>
         <div id="articole-autor-container">
-           <?php detaliiArticol($detaliiArticol) ?>
+           <?php echo $articoleAut ?>
         </div>
 
     </div>
