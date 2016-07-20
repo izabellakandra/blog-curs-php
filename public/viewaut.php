@@ -1,7 +1,7 @@
 <?php
 include '../inc/db.php';
 include '../inc/functions.php';
-
+session_start();
 
 if(!isset($_GET['autID'])){
     page_not_found();
@@ -29,10 +29,12 @@ $articol = $results[0];
 
 
 echo template('page_tpl', array(
-                                          'page_title' => 'Autor: ' . $articol['nume'],
-                                          'content' => template('main_tpl', array ( 'art' => template('articole/autor_tpl', array('articole' => $results)
-                                 )))
-            ));
+  'page_title' => 'Autor: ' . $articol['nume'],
+  'content' => template('main_tpl', array ( 
+    'art' => template('articole/autor_tpl', array(
+      'articole' => $results))
+    ))
+));
 
 
 ?>
