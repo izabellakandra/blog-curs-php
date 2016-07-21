@@ -21,7 +21,7 @@ $results = db_select($con, $query);
 
 
 echo template('page_tpl', array(
-    'page_title' => 'Blog title',
+    'page_title' => 'GastroCylexia',
     'banner_tpl' => template('banner_tpl', array(
     	'page_title' => 'GastroCylexia',
     	'page_slogan' => 'Bun venit in lumea retetelor!',
