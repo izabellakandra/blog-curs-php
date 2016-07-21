@@ -38,7 +38,14 @@
                         <span class='st_email_large' displayText='Email'></span>
 
                     </div>
-                    <div class="white-block">Alta prostie</div>
+                    <div class="white-block">
+                        <h4>Pagini utile</h4><br/>
+                        <?php echo lnk('gustos.ro','http://www.gustos.ro/'); ?><br/>
+                        <?php echo lnk('petitchef.ro','http://www.petitchef.ro/'); ?><br/>
+                        <?php echo lnk('clickpoftabuna.ro','http://clickpoftabuna.ro/'); ?><br/>
+                        <?php echo lnk('retete-gustoase.ro','http://www.retete-gustoase.ro/'); ?><br/>
+                        <?php echo lnk('bucataria-romaneasca.ro','http://bucataria-romaneasca.ro/'); ?><br/>
+                    </div>
                 </div>
             </div>
         </div>
