@@ -8,7 +8,7 @@
     <div class="form-group">
         <label for="descrierea" class="control-label col-md-offset-1 col-md-2">Descrierea retetei: </label>
         <div class="col-md-8">
-            <textarea rows="4" cols="50" class="form-control" style="resize:vertical;" name="descrierea" id="descrierea" > <?php if($values != NULL) echo $values['descrierea']; ?></textarea>
+            <textarea rows="4" cols="50" class="form-control" style="resize:vertical;" name="descrierea" id="descrierea"  data-toggle="popover" data-placement="right" data-content="<?php if(isset($error['descrierea'])) echo $error['descrierea']; ?>"> <?php if($values != NULL) echo $values['descrierea']; ?></textarea>
         </div>
     </div>    
     <div class="form-group">
