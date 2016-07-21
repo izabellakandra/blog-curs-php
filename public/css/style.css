@@ -219,3 +219,9 @@ input[type="file"] {
 button[type="submit"] {
   margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    margin: 10px;
+  }
+}
