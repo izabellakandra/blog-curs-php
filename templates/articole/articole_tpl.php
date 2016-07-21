@@ -1,5 +1,5 @@
 <div>
-         <a href="" class="btn btn-default"> Creare articol </a>
+         <a href="" class="btn"> Creare articol </a>
 </div>
 <br><br>
 <div>
