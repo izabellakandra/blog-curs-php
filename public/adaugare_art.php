@@ -25,7 +25,7 @@ if(isset($_SESSION['user'])){
 			'pass' => 'root',
 		));
 
-		$path = 'images/retete.jpg';
+		$path = '';
 		if (!empty($_FILES['caleImg']['name'])) {
 			if (!checkImgFile('caleImg', $error)) {
 				$namedError['img'] = $error;
