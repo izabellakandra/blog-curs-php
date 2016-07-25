@@ -48,7 +48,7 @@ if (isset($_POST['name'])) {
         }
     }
 
-    $path = 'images/profile.png';
+    $path = 'images/users/profile.png';
     if (!empty($_FILES['userImage']['name'])) {
         if (!checkImgFile('userImage', $error)) {
             $namedError['img'] = $error;
