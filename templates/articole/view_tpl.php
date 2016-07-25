@@ -22,6 +22,9 @@
 						<div class="col-md-offset-1 col-md-4">
 							<a href="modificare_art.php?ID=<?php echo $_GET['ID'];?>" class="btn"> Modifica reteta </a>
 						</div>
+						<div class="col-md-offset-1 col-md-4">
+							<a href="stergere_art.php?ID=<?php echo $_GET['ID'];?>" class="btn"> Sterge reteta </a>
+						</div>
 					</div>
 				<?php endif;?>
     <?php endforeach;?>
