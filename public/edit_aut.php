@@ -12,39 +12,40 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
+$conn = db_connect(array(
+    'database' => 'blog_curs_php',
+    'pass' => 'root',
+        ));
+
 if (isset($_POST['name'])) {
     if (isset($_POST['ref']))
         $ref = $_POST['ref'];
-    $error = NULL;
-    $namedError = array();
     if (!checkText($_POST['name'], $error, 3, 80))
         $namedError['name'] = $error;
     if (!checkText($_POST['email'], $error, 6, 254))
         $namedError['email'] = $error;
-    else
-    if (!preg_match('/\b[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}\b/', $_POST['email']))
-        $namedError['email'] = 'Not valid email address format!';
+    else {
+        if (!preg_match('/\b[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}\b/', $_POST['email']))
+            $namedError['email'] = 'Not valid email address format!';
+    }
     if (!checkText($_POST['user'], $error, 3, 80))
         $namedError['user'] = $error;
-    if (!checkText($_POST['pass'], $error, 4, 50))
-        $namedError['pass'] = $error;
-
-    $conn = db_connect(array(
-        'database' => 'blog_curs_php',
-        'pass' => 'root',
-    ));
+    if(trim($_POST['pass']) != '' && $_POST['pass']== NULL ) {
+        if (!checkText($_POST['pass'], $error, 4, 50))
+            $namedError['pass'] = $error;
+    }
 
     if (!isset($namedError['email']) || !isset($namedError['user'])) {
-        $result = db_select($conn, 'SELECT email, user FROM autori WHERE email=:email or user=:user', array(
+        $result = db_select($conn, 'SELECT ID, email, user FROM autori WHERE email=:email or user=:user', array(
             ':email' => $_POST['email'],
             ':user' => $_POST['user'],
         ));
         //print_r($result);
         if (!empty($result)) {
-            if ($result[0]['email'] == trim($_POST['email']))
-                $namedError['email'] = 'That email address is already registered!';
-            if ($result[0]['user'] == trim($_POST['user']))
-                $namedError['user'] = 'That user name is already taken!';
+            if (($result[0]['email'] == trim($_POST['email'])) && ($result[0]['ID'] != $_POST['ID']))
+                $namedError['email'] = 'The new email address is already registered!';
+            if (($result[0]['user'] == trim($_POST['user'])) && ($result[0]['ID'] != $_POST['ID']))
+                $namedError['user'] = 'The new user name is already taken!';
         }
     }
 
@@ -54,7 +55,7 @@ if (isset($_POST['name'])) {
             $namedError['img'] = $error;
         }
         if (empty($namedError)) {
-            $path = 'images/users/' . time(). '_' . $_POST['user'] . '_' . $_FILES['userImage']['name'];
+            $path = 'images/users/' . time() . '_' . $_POST['user'] . '_' . $_FILES['userImage']['name'];
             if (!move_uploaded_file($_FILES['userImage']['tmp_name'], $path)) {
                 $namedError['img'] = 'Failed to move uploaded file.';
             }
@@ -81,12 +82,22 @@ if (isset($_POST['name'])) {
         showForm($ref, $namedError, $_POST);
     }
 } else {
-    showForm($ref, NULL);
+    $result = db_select($conn, 'SELECT * FROM autori WHERE user=:user', array(
+        ':user' => $_SESSION['user'],
+    ));
+    if (!empty($result)) {
+        $values['ID'] = $result[0]['ID'];
+        $values['name'] = $result[0]['nume'];
+        $values['email'] = $result[0]['email'];
+        $values['user'] = $result[0]['user'];
+        //$values['name'] = $result['nume'];
+    }
+    showForm($ref, NULL, $values);
 }
 
 function showForm($ref, $error, $values = NULL) {
     echo template('page_tpl', array(
-        'page_title' => 'Inregistrare',
+        'page_title' => 'Editare',
         'content' => template('inregistrare_tpl', array(
             'ref' => $ref,
             'error' => $error,
