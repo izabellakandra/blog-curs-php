@@ -42,6 +42,7 @@ if (isset($_POST['user'])) {
                 exit;
             }
             //showForm($ref, $namedError, $_POST);
+            $_SESSION['userID'] = $result[0]['ID'];
             $_SESSION['user'] = $_POST['user'];
             header('Location: ' . $ref);
             exit;

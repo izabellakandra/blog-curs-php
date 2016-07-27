@@ -30,7 +30,7 @@ if (isset($_POST['name'])) {
     }
     if (!checkText($_POST['user'], $error, 3, 80))
         $namedError['user'] = $error;
-    if(trim($_POST['pass']) != '' && $_POST['pass']== NULL ) {
+    if(trim($_POST['pass']) != '' && $_POST['pass'] != NULL ) {
         if (!checkText($_POST['pass'], $error, 4, 50))
             $namedError['pass'] = $error;
     }
@@ -42,9 +42,9 @@ if (isset($_POST['name'])) {
         ));
         //print_r($result);
         if (!empty($result)) {
-            if (($result[0]['email'] == trim($_POST['email'])) && ($result[0]['ID'] != $_POST['ID']))
+            if (($result[0]['email'] == trim($_POST['email'])) && ($result[0]['ID'] != $_SESSION['userID']))
                 $namedError['email'] = 'The new email address is already registered!';
-            if (($result[0]['user'] == trim($_POST['user'])) && ($result[0]['ID'] != $_POST['ID']))
+            if (($result[0]['user'] == trim($_POST['user'])) && ($result[0]['ID'] != $_SESSION['userID']))
                 $namedError['user'] = 'The new user name is already taken!';
         }
     }
@@ -67,7 +67,9 @@ if (isset($_POST['name'])) {
             'database' => 'blog_curs_php',
             'pass' => 'root',
         ));
-        db_insert($conn, 'INSERT INTO autori (nume,email,user,parola,caleImg) VALUES (:name, :email, :user, :pass, :path)', array(
+        $query = 'UPDATE autori SET nume = :name, email = :email, user = :user';
+        if(trim($_POST['pass']) != '' && $_POST['pass'] != NULL )
+        db_update($conn, 'INSERT INTO autori (nume,email,user,parola,caleImg) VALUES (:name, :email, :user, :pass, :path)', array(
             ':name' => $_POST['name'],
             ':email' => $_POST['email'],
             ':user' => $_POST['user'],
@@ -86,11 +88,10 @@ if (isset($_POST['name'])) {
         ':user' => $_SESSION['user'],
     ));
     if (!empty($result)) {
-        $values['ID'] = $result[0]['ID'];
         $values['name'] = $result[0]['nume'];
         $values['email'] = $result[0]['email'];
         $values['user'] = $result[0]['user'];
-        //$values['name'] = $result['nume'];
+        //$values['pass'] = $result['parola'];
     }
     showForm($ref, NULL, $values);
 }

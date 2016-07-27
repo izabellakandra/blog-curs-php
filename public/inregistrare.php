@@ -73,6 +73,7 @@ if (isset($_POST['name'])) {
             ':pass' => password_hash($_POST['pass'], PASSWORD_BCRYPT),
             ':path' => $path,
         ));
+        $_SESSION['userID'] = db_last_insert_id($conn);
         $_SESSION['user'] = $_POST['user'];
         header('Location: ' . $ref);
         //showForm($ref);

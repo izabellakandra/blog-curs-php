@@ -35,9 +35,6 @@
         </div>
     </div>
     <input type="hidden" name="ref" value="<?php echo $ref ?>">
-    <?php if(isset($values['ID'])): ?>
-    <input type="hidden" name="ID" value="<?php echo $values['ID'] ?>">
-    <?php endif; ?>
     <div class="form-group">
         <div class="col-md-offset-5 col-md-7"><button type="submit" class="btn btn-primary">Inregistrare</button></div>
     </div>
