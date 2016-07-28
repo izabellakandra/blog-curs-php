@@ -36,6 +36,6 @@
     </div>
     <input type="hidden" name="ref" value="<?php echo $ref ?>">
     <div class="form-group">
-        <div class="col-md-offset-5 col-md-7"><button type="submit" class="btn btn-primary">Inregistrare</button></div>
+        <div class="col-md-offset-5 col-md-7"><button type="submit" class="btn btn-primary"><?php if(isset($_SESSION['user'])): ?>Modificare<?php else: ?>Inregistrare<?php endif;?></button></div>
     </div>
 </form>

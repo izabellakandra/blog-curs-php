@@ -68,14 +68,22 @@ if (isset($_POST['name'])) {
             'pass' => 'root',
         ));
         $query = 'UPDATE autori SET nume = :name, email = :email, user = :user';
-        if(trim($_POST['pass']) != '' && $_POST['pass'] != NULL )
-        db_update($conn, 'INSERT INTO autori (nume,email,user,parola,caleImg) VALUES (:name, :email, :user, :pass, :path)', array(
+        $param = array(
             ':name' => $_POST['name'],
             ':email' => $_POST['email'],
             ':user' => $_POST['user'],
-            ':pass' => password_hash($_POST['pass'], PASSWORD_BCRYPT),
-            ':path' => $path,
-        ));
+            ':ID' => $_SESSION['userID'],
+        );
+        if(trim($_POST['pass']) != '' && $_POST['pass'] != NULL ) {
+            $query = $query . ', parola = :pass';
+            $param[':pass'] = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+        }
+        if (!empty($_FILES['userImage']['name'])) {
+            $query = $query . ', caleImg = :path';
+            $param[':path'] = $path;
+        }
+        $query = $query . ' WHERE ID=:ID';
+        db_update($conn, $query, $param);
         $_SESSION['user'] = $_POST['user'];
         header('Location: ' . $ref);
         //showForm($ref);
