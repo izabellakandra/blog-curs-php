@@ -22,10 +22,7 @@ if (isset($_POST['user'])) {
     if (!checkText($_POST['pass'], $error, 4, 50))
         $namedError['pass'] = $error;
 
-    $conn = db_connect(array(
-        'database' => 'blog_curs_php',
-        'pass' => 'root',
-    ));
+    $conn = db_connect($config['DB']);
 
 
     if (empty($namedError)) {

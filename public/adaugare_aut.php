@@ -12,10 +12,7 @@ if (!isset($_SESSION['user'])) {
     exit;
 }
 
-$conn = db_connect(array(
-    'database' => 'blog_curs_php',
-    'pass' => 'root',
-        ));
+$conn = db_connect($config['DB']);
 
 if (isset($_POST['name'])) {
     if (isset($_POST['ref']))
@@ -63,10 +60,7 @@ if (isset($_POST['name'])) {
     }
     //print_r($namedError);
     if (empty($namedError)) {
-        $conn = db_connect(array(
-            'database' => 'blog_curs_php',
-            'pass' => 'root',
-        ));
+        $conn = db_connect($config['DB']);
         $query = 'UPDATE autori SET nume = :name, email = :email, user = :user';
         $param = array(
             ':name' => $_POST['name'],

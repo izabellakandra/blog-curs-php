@@ -12,7 +12,8 @@
             <div class="col-md-8 col-md-pull-4">
                 <h3><?php echo $numeAutor ?></h3>
                 <div><label class="column-equal">Username: </label> <?php echo $username ?></div>
-                <div><label class="column-equal">Adresa email: </label> <?php echo $email ?></div>              
+                <div><label class="column-equal">Adresa email: </label> <?php echo $email ?></div>  
+                <?php if($ID == $_SESSION['userID']): ?><div class="text-center"><a href="adaugare_aut.php" class="btn"> Modifica date </a></div><?php endif;?>
             </div>
         </div> 
     </div>

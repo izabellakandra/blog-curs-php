@@ -29,10 +29,7 @@ if (isset($_POST['name'])) {
     if (!checkText($_POST['pass'], $error, 4, 50))
         $namedError['pass'] = $error;
 
-    $conn = db_connect(array(
-        'database' => 'blog_curs_php',
-        'pass' => 'root',
-    ));
+    $conn = db_connect($config['DB']);
 
     if (!isset($namedError['email']) || !isset($namedError['user'])) {
         $result = db_select($conn, 'SELECT email, user FROM autori WHERE email=:email or user=:user', array(
@@ -62,10 +59,7 @@ if (isset($_POST['name'])) {
     }
     //print_r($namedError);
     if (empty($namedError)) {
-        $conn = db_connect(array(
-            'database' => 'blog_curs_php',
-            'pass' => 'root',
-        ));
+        $conn = db_connect($config['DB']);
         db_insert($conn, 'INSERT INTO autori (nume,email,user,parola,caleImg) VALUES (:name, :email, :user, :pass, :path)', array(
             ':name' => $_POST['name'],
             ':email' => $_POST['email'],

@@ -6,10 +6,7 @@ include_once "../inc/validations.php";
 
 session_start();
 
-$conn = db_connect(array(
-			'database' => 'blog_curs_php',
-			'pass' => 'root',
-		));
+$conn = db_connect($config['DB']);
 		
 if (isset($_POST['titlu'])) {
 		if (isset($_POST['ref']))
@@ -36,10 +33,7 @@ if (isset($_POST['titlu'])) {
 		}
 		//print_r($namedError);
 		if (empty($namedError)) {
-			$conn = db_connect(array(
-				'database' => 'blog_curs_php',
-				'pass' => 'root',
-			));
+			$conn = db_connect($config['DB']);
 			//echo $_POST['titlu'] , PHP_EOL;
 			//echo $_POST['continut'] , PHP_EOL;
 			//echo $path, PHP_EOL;die;						

@@ -9,7 +9,12 @@
         </h3>
         Autor: <em><?php
             if (isset($_SESSION['user']))
-                echo html_a($articol['nume'], 'autor.php');
+                if($articol['autID'] == $_SESSION['userID']) {echo 'test';
+                    echo html_a($articol['nume'], 'autor.php');
+                }
+                else {echo 'test1';
+                    echo html_a($articol['nume'], 'viewaut.php?autID=' . $articol['autID']);
+                }
             else
                 echo html_a($articol['nume'], 'viewaut.php?autID=' . $articol['autID']);
             ?></em> <span class="text-muted">|</span> Data: <em><?php echo $articol['data']; ?> </em>
@@ -17,5 +22,5 @@
         <br>
         <?php echo ellipsis($articol['continut'], 300); ?>
         <br><br>
-<?php endforeach; ?>
+    <?php endforeach; ?>
 </div>

@@ -7,14 +7,7 @@ if(!isset($_GET['autID'])){
     page_not_found();
 }
 
-$con = db_connect(array(
-        'host' => '127.0.0.1',
-        'port' => 3306,
-        'database' => 'blog_curs_php',
-        'charset' => 'utf8',
-        'user' => 'root',
-        'pass' => 'root',
-));
+$con = db_connect($config['DB']);
 
 $query = "SELECT titlu, continut, autID, nume, data, articole.ID FROM articole INNER JOIN autori ON articole.autID=autori.ID WHERE articole.autID = :aut";
 

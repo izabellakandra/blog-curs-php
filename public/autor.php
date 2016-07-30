@@ -5,13 +5,16 @@ include '../inc/db.php';
 
 session_start();
 
+if (!isset($_SESSION['user'])) {
+    header('Location: index.php');
+    exit;
+}
+
 $query = "SELECT * FROM autori WHERE user =" . "'" . $_SESSION['user'] . "'";
-$conn = db_connect(array(
-    'database' => 'blog_curs_php',
-    'pass' => 'root',
-        ));
+$conn = db_connect($config['DB']);
 
 $detaliiAutor = db_select($conn, $query);
+$autID = $detaliiAutor[0]['ID'];
 $numeAutor = $detaliiAutor[0]['nume'];
 $email = $detaliiAutor[0]['email'];
 $username = $detaliiAutor[0]['user'];
@@ -33,6 +36,7 @@ $detaliiArticol = db_select($conn, $query2, array(
 echo template('page_tpl', array(
     'page_title' => 'Autor',
     'content' => template('autor_tpl', array(
+        'ID' => $autID,
         'numeAutor' => $numeAutor,
         'username' => $username,
         'email' => $email,

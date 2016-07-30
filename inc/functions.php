@@ -1,5 +1,7 @@
 <?php
 
+$config = json_decode(file_get_contents("../config.json"), TRUE);
+        
 function template($file, $args) {
     ob_start();
     extract($args);
