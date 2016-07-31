@@ -9,10 +9,10 @@
         </h3>
         Autor: <em><?php
             if (isset($_SESSION['user']))
-                if($articol['autID'] == $_SESSION['userID']) {echo 'test';
+                if($articol['autID'] == $_SESSION['userID']) {
                     echo html_a($articol['nume'], 'autor.php');
                 }
-                else {echo 'test1';
+                else {
                     echo html_a($articol['nume'], 'viewaut.php?autID=' . $articol['autID']);
                 }
             else
