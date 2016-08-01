@@ -9,24 +9,24 @@ function checkImgFile($id, &$error, $size = 2000000) {
           return FALSE;
           } */
         case UPLOAD_ERR_INI_SIZE: {
-                $error = 'Exceeded filesize limit!';
+                $error = 'Mărimea prea mare!';
                 return FALSE;
             }
         case UPLOAD_ERR_FORM_SIZE: {
-                $error = 'Exceeded filesize limit!';
+                $error = 'Mărimea prea mare!';
                 return FALSE;
             }
         default: {
-                $error = 'Unknown errors!';
+                $error = 'Eroare necunoscută!';
                 return FALSE;
             }
     }
     if ($_FILES[$id]['size'] > $size) {
-        $error = 'Exceeded filesize limit!';
+        $error = 'Mărimea prea mare!';
         return FALSE;
     }
     if ($_FILES[$id]['type'] != "image/jpg" && $_FILES[$id]['type'] != "image/png" && $_FILES[$id]['type'] != "image/jpeg" && $_FILES[$id]['type'] != "image/gif") {
-        $error = 'Invalid file format!';
+        $error = 'Format invalid!';
         return FALSE;
     }
     return TRUE;
@@ -34,15 +34,15 @@ function checkImgFile($id, &$error, $size = 2000000) {
 
 function checkText($text, &$error, $minSize, $maxSize) {
     if(trim($text) == '' || $text== NULL ) {
-        $error = 'Field is empty!';
+        $error = 'Câmp gol!';
         return FALSE;
     } 
-    if(strlen($text)>$maxSize){
-        $error = 'Text too long!';
+    if(strlen($text)>=$maxSize){
+        $error = 'Text prea lung!';
         return FALSE;
     }
-    if(strlen($text)<$minSize){
-        $error = 'Text too short!';
+    if(strlen($text)<=$minSize){
+        $error = 'Text prea scurt!';
         return FALSE;
     }
     return TRUE;

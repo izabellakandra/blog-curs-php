@@ -33,8 +33,8 @@ if (isset($_POST['user'])) {
         if (!empty($result)) {
             echo password_verify($_POST['pass'], $result[0]['parola']);
             if (!password_verify($_POST['pass'], $result[0]['parola'])) {
-                $namedError['user'] = 'Invalid login data!';
-                $namedError['pass'] = 'Invalid login data!';
+                $namedError['user'] = 'User sau parolă greșită!';
+                $namedError['pass'] = 'User sau parolă greșită!';
                 showForm($ref, $namedError, $_POST);
                 exit;
             }
@@ -44,8 +44,8 @@ if (isset($_POST['user'])) {
             header('Location: ' . $ref);
             exit;
         } else {
-            $namedError['user'] = 'Invalid login data!';
-            $namedError['pass'] = 'Invalid login data!';
+            $namedError['user'] = 'User sau parolă greșită!';
+            $namedError['pass'] = 'User sau parolă greșită!';
             showForm($ref, $namedError, $_POST);
         }
     } else {

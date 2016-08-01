@@ -23,7 +23,7 @@ if (isset($_POST['name'])) {
         $namedError['email'] = $error;
     else
     if (!preg_match('/\b[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}\b/', $_POST['email']))
-        $namedError['email'] = 'Not valid email address format!';
+        $namedError['email'] = 'Formatul incorrect!';
     if (!checkText($_POST['user'], $error, 3, 80))
         $namedError['user'] = $error;
     if (!checkText($_POST['pass'], $error, 4, 50))
@@ -39,9 +39,9 @@ if (isset($_POST['name'])) {
         //print_r($result);
         if (!empty($result)) {
             if ($result[0]['email'] == trim($_POST['email']))
-                $namedError['email'] = 'That email address is already registered!';
+                $namedError['email'] = 'Adressa este deja înregistrată!';
             if ($result[0]['user'] == trim($_POST['user']))
-                $namedError['user'] = 'That user name is already taken!';
+                $namedError['user'] = 'Nume de user e deja folosită!';
         }
     }
 
